@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidad Educativa Francisco de Orellana</title>
+
+<style>
+:root {
+    --azul: #092b50;
+    --azul2: #1265a8;
+    --celeste: #eaf4fc;
+    --dorado: #e6b84c;
+    --blanco: #ffffff;
+    --texto: #26384b;
+}
+
+-- {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--texto);
+    background: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background: var(--azul);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 12px #0002;
+}
+
+.barra-superior {
+    background: #061d36;
+    padding: 7px 6%;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.navbar {
+    min-height: 82px;
+    padding: 12px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logo-escudo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    object-fit: contain;
+    border: 2px solid var(--dorado);
+}
+
+.logo-texto strong {
+    display: block;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+.logo-texto span {
+    font-size: 11px;
+    color: #c8dced;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a, .dropbtn {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+nav a:hover, .dropbtn:hover {
+    color: var(--dorado);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 27px;
+    left: 0;
+    background: white;
+    min-width: 230px;
+    box-shadow: 0 8px 20px #0002;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1100;
+}
+
+.dropdown-menu a {
+    color: var(--azul);
+    display: block;
+    padding: 12px 16px;
+}
+
+.dropdown-menu a:hover {
+    background: var(--celeste);
+    color: var(--azul2);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.vista-seccion {
+    display: none;
+}
+
+.vista-seccion.activa {
+    display: block;
+}
+
+.hero {
+    min-height: 540px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--celeste);
+}
+
+.hero-texto {
+    padding: 80px 10% 70px 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.etiqueta {
+    color: var(--azul2);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    color: var(--azul);
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1.12;
+    margin: 18px 0;
+}
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--azul2);
+    color: white;
+    padding: 13px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--azul);
+    transform: translateY(-2px);
+}
+
+/* FOTO DE LA CANCHA/PATIO EN INICIO ( MODIFICADA CON ETIQUETA IMG ) */
+.hero-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.hero-imagen img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #00000018;
+}
+
+.datos {
+    background: var(--azul);
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    padding: 28px 7%;
+    gap: 20px;
+}
+
+.dato strong {
+    color: var(--dorado);
+    font-size: 25px;
+    display: block;
+}
+
+.dato span {
+    font-size: 14px;
+}
+
+section {
+    padding: 75px 8%;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo span {
+    color: var(--azul2);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.titulo h2 {
+    color: var(--azul);
+    font-size: 34px;
+    margin-top: 8px;
+}
+
+.nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 35px;
+    align-items: center;
+}
+
+/* ESTILO PARA LA IMAGEN DE LOS LICENCIADOS EN QUIÉNES SOMOS */
+.nosotros-imagen-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #00000018;
+}
+
+.nosotros-texto h3 {
+    color: var(--azul);
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.mini-tarjetas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.mini-tarjeta {
+    padding: 18px;
+    border-left: 4px solid var(--dorado);
+    background: var(--celeste);
+    border-radius: 5px;
+}
+
+.mini-tarjeta h4 {
+    color: var(--azul);
+    margin-bottom: 5px;
+}
+
+.historia {
+    margin-top: 25px;
+    padding: 22px;
+    background: #f5f8fc;
+    border-radius: 8px;
+}
+
+.historia h3 {
+    color: var(--azul);
+    margin-bottom: 8px;
+}
+
+.equipo {
+    background: var(--celeste);
+}
+
+.foto-equipo-banner {
+    max-width: 900px;
+    margin: 0 auto 35px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px #0000001a;
+    background: white;
+}
+
+.foto-equipo-banner img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.foto-equipo-banner p {
+    padding: 14px 20px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--azul);
+    font-size: 15px;
+}
+
+.equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.persona {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px #0000000c;
+}
+
+.persona .circulo {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: var(--dorado);
+    display: grid;
+    place-items: center;
+    margin: auto auto 15px;
+    font-size: 30px;
+}
+
+.persona h3 {
+    color: var(--azul);
+    font-size: 17px;
+}
+
+.detalle-programa {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 10px;
+    background: var(--celeste);
+}
+
+.detalle-programa h3 {
+    color: var(--azul);
+    margin-bottom: 8px;
+}
+
+.galeria-especialidad {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+    align-items: center;
+    background: #f5f8fc;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.galeria-especialidad img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px #0000001a;
+}
+
+.admisiones {
+    background: #f7faff;
+}
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.paso {
+    background: white;
+    border-radius: 10px;
+    padding: 22px;
+    border-top: 4px solid var(--azul2);
+    box-shadow: 0 5px 18px #0000000b;
+}
+
+.numero {
+    color: var(--azul2);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.paso h3 {
+    color: var(--azul);
+    margin: 8px 0;
+}
+
+.formulario {
+    max-width: 650px;
+    margin: 35px auto 0;
+    padding: 28px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+.formulario h3 {
+    color: var(--azul);
+    margin-bottom: 15px;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd8e4;
+    border-radius: 5px;
+    margin: 7px 0 14px;
+    font-family: inherit;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.noticia {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #00000012;
+    background: white;
+}
+
+.noticia img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.noticia-contenido {
+    padding: 20px;
+}
+
+.noticia small {
+    color: var(--azul2);
+    font-weight: bold;
+}
+
+.noticia h3 {
+    color: var(--azul);
+    margin: 8px 0;
+}
+
+.contacto {
+    background: var(--celeste);
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contacto-info {
+    background: var(--azul);
+    color: white;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.contacto-info h3 {
+    color: var(--dorado);
+    margin-bottom: 20px;
+}
+
+.contacto-info p {
+    margin: 15px 0;
+}
+
+.mapa {
+    width: 100%;
+    min-height: 300px;
+    border: 0;
+    border-radius: 10px;
+}
+
+footer {
+    background: #061d36;
+    color: white;
+    padding: 30px 8%;
+    text-align: center;
+}
+
+footer strong {
+    color: var(--dorado);
+}
+
+footer p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+@media(max-width: 950px) {
+    nav { gap: 12px; }
+    nav a, .dropbtn { font-size: 12px; }
+    .pasos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width: 760px) {
+    .navbar { flex-wrap: wrap; }
+    .menu-btn { display: block; }
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 0;
+    }
+    nav.activo { display: flex; }
+    .dropdown { width: 100%; }
+    .dropdown-menu { position: static; margin-top: 10px; box-shadow: none; display: none; }
+    .dropdown.abierto .dropdown-menu { display: block; }
+    .hero, .nosotros-grid, .galeria-especialidad, .contacto-grid, .equipo-grid, .noticias-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 450px) {
+    .pasos { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="barra-superior">
+        <span>UNIDAD EDUCATIVA FRANCISCO DE ORELLANA</span>
+        <span>Educación para un futuro mejor</span>
+    </div>
+
+    <div class="navbar">
+        <a onclick="cambiarVista('inicio')" class="logo">
+            <!-- 1. ESCUDO EN EL LOGOTIPO -->
+            <img src="imagenes/imagen0.png" alt="Escudo UEFO" class="logo-escudo">
+            <div class="logo-texto">
+                <strong>FRANCISCO DE ORELLANA</strong>
+                <span>COCA · ORELLANA · ECUADOR </span>
+            </div>
+        </a>
+
+        <button class="menu-btn" onclick="menuMovil()">☰</button>
+
+        <nav id="menu">
+            <a onclick="cambiarVista('inicio')">Inicio</a>
+            <a onclick="cambiarVista('nosotros')">Nosotros</a>
+
+            <div class="dropdown" id="dropdown">
+                <button class="dropbtn" onclick="menuOferta()">Oferta Académica ▾</button>
+                <div class="dropdown-menu">
+                    <a onclick="cambiarVista('ciencias')">Bachillerato en Ciencias</a>
+                    <a onclick="cambiarVista('informatica')">Técnico en Informática</a>
+                </div>
+            </div>
+
+            <a onclick="cambiarVista('admisiones')">Admisiones</a>
+            <a onclick="cambiarVista('noticias')">Noticias</a>
+            <a onclick="cambiarVista('contacto')">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- 1. VISTA INICIO -->
+    <div id="vista-inicio" class="vista-seccion activa">
+        <section class="hero">
+            <div class="hero-texto">
+                <span class="etiqueta">Bienvenidos a nuestra institución</span>
+                <h1>Tu futuro comienza con una buena educación</h1>
+                <p>En la Unidad Educativa Francisco de Orellana formamos estudiantes con conocimientos, valores y habilidades para enfrentar los desafíos del futuro.</p>
+                <button class="btn" onclick="cambiarVista('ciencias')">Conoce nuestra oferta académica</button>
+            </div>
+            <!-- FOTO DE LA CANCHA/PATIO EN INICIO AÑADIDA CON ETIQUETA IMG -->
+            <div class="hero-imagen">
+                <img src="imagenes/imagen1.jpeg" alt="Cancha o instalaciones UEFO">
+            </div>
+        </section>
+
+        <div class="datos">
+            <div class="dato"><strong>UEFO</strong><span>Identidad institucional</span></div>
+            <div class="dato"><strong>2</strong><span>Opciones de bachillerato</span></div>
+            <div class="dato"><strong>Futuro</strong><span>Formación académica y técnica</span></div>
+        </div>
+    </div>
+
+    <!-- 2. VISTA NOSOTROS (QUIÉNES SOMOS) -->
+    <div id="vista-nosotros" class="vista-seccion">
+        <section>
+            <div class="titulo">
+                <span>Conócenos</span>
+                <h2>¿Quiénes somos?</h2>
+                <p>Conoce nuestra identidad, principios y compromiso con la educación.</p>
+            </div>
+
+            <div class="nosotros-grid">
+                <!-- FOTO DE LOS LICENCIADOS EN QUIÉNES SOMOS -->
+                <div>
+                    <img src="imagenes/imagen4.jpeg" alt="Licenciados UEFO" class="nosotros-imagen-img">
+                </div>
+                <div class="nosotros-texto">
+                    <h3>Unidad Educativa Francisco de Orellana</h3>
+                    <p>Somos una institución educativa comprometida con la formación integral de los estudiantes, promoviendo el aprendizaje, la responsabilidad y los valores.</p>
+
+                    <div class="mini-tarjetas">
+                        <div class="mini-tarjeta">
+                            <h4>Misión</h4>
+                            <p>Brindar una educación de calidad que fortalezca los conocimientos, habilidades y valores de los estudiantes.</p>
+                        </div>
+                        <div class="mini-tarjeta">
+                            <h4>Visión</h4>
+                            <p>Ser una institución reconocida por su formación académica, técnica y humana.</p>
+                        </div>
+                    </div>
+
+                    <div class="historia">
+                        <h3>Ideario institucional</h3>
+                        <p>Promovemos el respeto, la honestidad, la solidaridad, la responsabilidad y el trabajo en equipo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTORIDADES -->
+        <section class="equipo">
+            <div class="titulo">
+                <span>Nuestra comunidad</span>
+                <h2>Autoridades y equipo docente</h2>
+                <p>Personas que contribuyen al desarrollo de nuestra institución.</p>
+            </div>
+
+            <div class="foto-equipo-banner">
+                <img src="imagenes/imagen3.jpeg" alt="Autoridades y Docentes UEFO">
+                <p>Equipo directivo y docente de la Unidad Educativa Francisco de Orellana</p>
+            </div>
+
+            <div class="equipo-grid">
+                <div class="persona">
+                    <div class="circulo">★</div>
+                    <h3>Rectorado</h3>
+                    <p>Autoridad institucional</p>
+                </div>
+                <div class="persona">
+                    <div class="circulo">✎</div>
+                    <h3>Docentes</h3>
+                    <p>Formación y enseñanza</p>
+                </div>
+                <div class="persona">
+                    <div class="circulo">◆</div>
+                    <h3>Personal administrativo</h3>
+                    <p>Apoyo institucional</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 3. VISTA CIENCIAS -->
+    <div id="vista-ciencias" class="vista-seccion">
+        <section style="background:#f7faff;">
+            <div class="titulo">
+                <span>Primera opción</span>
+                <h2>Bachillerato en Ciencias</h2>
+            </div>
+
+            <div class="galeria-especialidad">
+                <img src="imagenes/imagen01.jpeg" alt="Espacio gráfico de Ciencias UEFO">
+                <div>
+                    <h3 style="color: var(--azul); font-size: 24px; margin-bottom: 12px;">Formación Científica e Investigativa</h3>
+                    <p style="margin-bottom: 15px;">En el Bachillerato en Ciencias preparamos a los estudiantes con bases sólidas en experimentación, razonamiento lógico y análisis crítico para su futuro ingreso a la universidad.</p>
+                    <p>Se desarrollan proyectos experimentales y de investigación en laboratorios especializados.</p>
+                </div>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Perfil del estudiante</h3>
+                <p>El estudiante desarrolla habilidades de investigación, razonamiento, análisis y comprensión de fenómenos naturales y sociales.</p>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Plan de estudios</h3>
+                <p>Incluye asignaturas del tronco común y áreas científicas como Matemáticas, Física, Química y Biología.</p>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Proyectos y laboratorios</h3>
+                <p>Se desarrollan actividades experimentales, investigaciones y proyectos relacionados con las ciencias.</p>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Continuidad universitaria</h3>
+                <p>Esta formación permite prepararse para continuar estudios en diferentes carreras universitarias.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. VISTA INFORMATICA -->
+    <div id="vista-informatica" class="vista-seccion">
+        <section>
+            <div class="titulo">
+                <span>Segunda opción</span>
+                <h2>Técnico en Informática</h2>
+            </div>
+
+            <div class="galeria-especialidad">
+                <img src="imagenes/imagen2.jpeg" alt="Laboratorio de Informática UEFO">
+                <div>
+                    <h3 style="color: var(--azul); font-size: 24px; margin-bottom: 12px;">Formación Práctica y Tecnológica</h3>
+                    <p style="margin-bottom: 15px;">Nuestros estudiantes de Bachillerato Técnico en Informática reciben capacitación práctica constante en nuestros laboratorios, desarrollando destrezas reales en programación, ofimática, mantenimiento de equipos y redes.</p>
+                    <p>Los prepararemos para integrarse con éxito tanto en el ámbito laboral como en carreras universitarias de ingeniería y tecnología.</p>
+                </div>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Perfil profesional</h3>
+                <p>El estudiante desarrolla habilidades para programar, trabajar con redes, realizar mantenimiento y brindar soporte técnico a equipos informáticos.</p>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Malla curricular técnica</h3>
+                <p>Comprende contenidos relacionados con programación, sistemas operativos, redes, soporte técnico y desarrollo web.</p>
+            </div>
+
+            <div class="detalle-programa">
+                <h3>Prácticas preprofesionales</h3>
+                <p>Las prácticas permiten aplicar los conocimientos adquiridos y fortalecer las habilidades para el mundo laboral.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. VISTA ADMISIONES -->
+    <div id="vista-admisiones" class="vista-seccion">
+        <section class="admisiones">
+            <div class="titulo">
+                <span>Forma parte de UEFO</span>
+                <h2>Admisiones y matriculación</h2>
+                <p>Conoce los pasos generales para realizar el proceso de ingreso.</p>
+            </div>
+
+            <div class="pasos">
+                <div class="paso">
+                    <div class="numero">01</div>
+                    <h3>Infórmate</h3>
+                    <p>Consulta los requisitos y fechas oficiales de matrícula.</p>
+                </div>
+                <div class="paso">
+                    <div class="numero">02</div>
+                    <h3>Reúne documentos</h3>
+                    <p>Prepara la documentación solicitada por la institución.</p>
+                </div>
+                <div class="paso">
+                    <div class="numero">03</div>
+                    <h3>Realiza el trámite</h3>
+                    <p>Acude a la institución o utiliza los canales oficiales disponibles.</p>
+                </div>
+                <div class="paso">
+                    <div class="numero">04</div>
+                    <h3>Confirma tu matrícula</h3>
+                    <p>Verifica que el proceso haya sido completado correctamente.</p>
+                </div>
+            </div>
+
+            <div class="formulario">
+                <h3>Solicitud de información</h3>
+                <p>Completa tus datos para preparar un mensaje de consulta.</p>
+
+                <form onsubmit="enviarCorreo(event, 'admisiones')">
+                    <label>Nombre completo</label>
+                    <input type="text" id="nombreAdmision" placeholder="Escribe tu nombre" required>
+
+                    <label>Correo electrónico</label>
+                    <input type="email" id="correoAdmision" placeholder="ejemplo@correo.com" required>
+
+                    <label>¿Qué información necesitas?</label>
+                    <select id="temaAdmision">
+                        <option>Requisitos de matrícula</option>
+                        <option>Oferta académica</option>
+                        <option>Fechas de inscripción</option>
+                        <option>Otra consulta</option>
+                    </select>
+
+                    <button class="btn" type="submit">Enviar consulta</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. VISTA NOTICIAS -->
+    <div id="vista-noticias" class="vista-seccion">
+        <section>
+            <div class="titulo">
+                <span>Conoce nuestras actividades</span>
+                <h2>Noticias y eventos</h2>
+                <p>Información sobre las actividades de nuestra comunidad educativa.</p>
+            </div>
+
+            <div class="noticias-grid">
+                <article class="noticia">
+                    <img src="imagenes/imagen1.jpeg" alt="Instalaciones UEFO">
+                    <div class="noticia-contenido">
+                        <small>VIDA ESTUDIANTIL</small>
+                        <h3>Actividades institucionales</h3>
+                        <p>Conoce las actividades deportivas y culturales realizadas en nuestras instalaciones.</p>
+                    </div>
+                </article>
+
+                <article class="noticia">
+                    <img src="imagenes/imagen2.jpeg" alt="Laboratorio Informática">
+                    <div class="noticia-contenido">
+                        <small>EDUCACIÓN TÉCNICA</small>
+                        <h3>Proyectos estudiantiles</h3>
+                        <p>Prácticas y desarrollos tecnológicos realizados por los estudiantes en laboratorio.</p>
+                    </div>
+                </article>
+
+                <article class="noticia">
+                    <img src="imagenes/imagen3.jpeg" alt="Equipo Docente">
+                    <div class="noticia-contenido">
+                        <small>COMUNIDAD EDUCATIVA</small>
+                        <h3>Jornadas pedagógicas</h3>
+                        <p>Compromiso constante de nuestro personal docente con la excelencia educativa.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- 7. VISTA CONTACTO -->
+    <div id="vista-contacto" class="vista-seccion">
+        <section class="contacto">
+            <div class="titulo">
+                <span>Estamos para ayudarte</span>
+                <h2>Contáctanos</h2>
+                <p>Comunícate con nuestra institución para obtener más información.</p>
+            </div>
+
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>Información institucional</h3>
+                    <p>📍 Unidad Educativa Francisco de Orellana</p>
+                    <p>📞 Teléfono: +593 98 598 1359</p>
+                    <p>✉️ Correo: secretaria@uefranciscodeorellana.edu.ec   info@uefranciscodeorellana.edu.ec</p>
+                    <p>🌐 Ecuador</p>
+                </div>
+
+                <iframe
+                    class="mapa"
+                    src="https://maps.google.com/maps?q=Unidad%20Educativa%20Francisco%20de%20Orellana%20Ecuador&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy"
+                    title="Mapa de ubicación">
+                </iframe>
+            </div>
+
+            <div class="formulario">
+                <h3>Envíanos un mensaje</h3>
+
+                <form onsubmit="enviarCorreo(event, 'contacto')">
+                    <label>Nombre</label>
+                    <input type="text" id="nombreContacto" placeholder="Tu nombre" required>
+
+                    <label>Correo electrónico</label>
+                    <input type="email" id="correoContacto" placeholder="Tu correo" required>
+
+                    <label>Mensaje</label>
+                    <textarea id="mensajeContacto" rows="5" placeholder="Escribe tu mensaje" required></textarea>
+
+                    <button class="btn" type="submit">Preparar mensaje</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p><strong>UNIDAD EDUCATIVA FRANCISCO DE ORELLANA</strong></p>
+    <p>Educación, valores y formación para el futuro.</p>
+    <p>© 2026 - Todos los derechos reservados.</p>
+</footer>
+
+<script>
+function cambiarVista(idVista) {
+    const vistas = document.querySelectorAll('.vista-seccion');
+    vistas.forEach(v => v.classList.remove('activa'));
+
+    const destino = document.getElementById('vista-' + idVista);
+    if (destino) {
+        destino.classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById("menu").classList.remove("activo");
+    document.getElementById("dropdown").classList.remove("abierto");
+}
+
+function menuMovil() {
+    document.getElementById("menu").classList.toggle("activo");
+}
+
+function menuOferta() {
+    document.getElementById("dropdown").classList.toggle("abierto");
+}
+
+function enviarCorreo(evento, tipo) {
+    evento.preventDefault();
+    let asunto = "";
+    let cuerpo = "";
+
+    if (tipo === "admisiones") {
+        const nombre = document.getElementById("nombreAdmision").value;
+        const correo = document.getElementById("correoAdmision").value;
+        const tema = document.getElementById("temaAdmision").value;
+
+        asunto = "Consulta sobre admisiones";
+        cuerpo = "Nombre: " + nombre + "\nCorreo: " + correo + "\nConsulta: " + tema;
+    } else {
+        const nombre = document.getElementById("nombreContacto").value;
+        const correo = document.getElementById("correoContacto").value;
+        const mensaje = document.getElementById("mensajeContacto").value;
+
+        asunto = "Mensaje desde la página web UEFO";
+        cuerpo = "Nombre: " + nombre + "\nCorreo: " + correo + "\nMensaje: " + mensaje;
+    }
+
+    const destinatario = "correo@institucion.edu.ec";
+    window.location.href = "mailto:" + destinatario + "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpo);
+}
+</script>
+
+</body>
+</html>
